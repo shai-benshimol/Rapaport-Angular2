@@ -1,1 +1,1 @@
-# RapaportAngular2
+# Rapaport Home Project using Angular 2
