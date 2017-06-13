@@ -1,0 +1,104 @@
+<div class="container-fluid">
+    <!-- Statistic Row -->
+    <div class="row justify-content-lg-center jumbotron">
+        <div class="col-md-auto">
+            <div class="d-flex flex-column">
+                <div class="p-1">
+                    <h4 class="text-center">Statistics <a href="#add-diamond-modal" data-toggle="modal" data-targer="#profile-picture-modal" type="button"
+                            class="btn btn-outline-primary"><i class="fa fa-pencil"></i></a></h4>
+                </div>
+                <div class="p-1">
+                    <div class="d-flex flex-row  mb-2">
+                        <div class="p-2"><a><strong>Avarage Price</strong> {{this.calculator.getAvg()}}</a></div>
+                        <div class="p-2"><a><strong>Number Of Diamonds</strong> {{this.calculator.getNumOfDiamonds()}}</a></div>
+                        <div class="p-2"><a><strong>Min Price</strong> {{this.calculator.getMinPrice()}}</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ./ Statistic Row -->
+    <!-- Grid -->
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Shape</th>
+                <th>Size</th>
+                <th>Color</th>
+                <th>Clarity</th>
+                <th>Price</th>
+                <th>List Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let diamond of diamonds">
+                <th scope="row">{{diamond.getShape()}}</th>
+                <td>{{diamond.getSize()}}</td>
+                <td>{{diamond.getColor()}}</td>
+                <td>{{diamond.getClarity()}}</td>
+                <td>{{diamond.getPrice()}}</td>
+                <td>{{diamond.getListPrice()}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- ./Grid -->
+    <!-- Profile Picture Modal -->
+    <div class="modal fade" id="add-diamond-modal" role="dialog">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fa fa-diamond"></i> Add New Diamond</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <label for="text-input" class="col-3 col-form-label">Shape</label>
+                            <div class="col-10">
+                                <input #shape class="form-control" required minlength="2" maxlength="20" type="text" id="text-input">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="text-input" class="col-3 col-form-label">Size</label>
+                            <div class="col-10">
+                                <input #size class="form-control" required minlength="2" maxlength="20" type="text" id="text-input">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="text-input" class="col-3 col-form-label">Color</label>
+                            <div class="col-10">
+                                <input #color class="form-control" required minlength="2" maxlength="20" type="text" id="text-input">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="text-input" class="col-3 col-form-label">Clarity</label>
+                            <div class="col-10">
+                                <input #clarity class="form-control" required minlength="2" maxlength="20" type="text" id="text-input">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="text-input" class="col-3 col-form-label">Price</label>
+                            <div class="col-10">
+                                <input #price class="form-control" required minlength="2" maxlength="20" type="text" id="text-input">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="text-input" class="col-3 col-form-label">List Price</label>
+                            <div class="col-10">
+                                <input #listPrice class="form-control" required minlength="2" maxlength="20" type="text" id="text-input">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button [disabled]="stillLoading" (click)="onNewDiamond(shape.value,size.value,color.value,clarity.value,price.value,listPrice.value)"
+                            Stype="button" class="btn btn-outline-primary" data-dismiss="modal">Add</button>
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ./Profile Picture Modal -->
+</div>
