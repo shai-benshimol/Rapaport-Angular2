@@ -6,23 +6,23 @@ export class Calculator {
     private minPrice: number;
 
     setupDiamonds(diamonds: Array<Diamond>) {
-        
+
         this.diamondsCount = diamonds.length;
         let singlePrice = 0;
-        
+
         // Calculate Avarage
         diamonds.forEach(diamond => {
             singlePrice += diamond.getPrice();
         });
 
         this.avgPrice = (singlePrice / this.diamondsCount);
-        
+
         //Get minumim price
-        this.minPrice =  Math.min.apply(Math,diamonds.map(function(price){return price.getPrice()}));
-        
+        this.minPrice = Math.min.apply(Math, diamonds.map(function (price) { return price.getPrice() }));
+
     }
     getAvg() {
-        return this.avgPrice;
+        return !Number.isInteger(this.avgPrice)? Number(this.avgPrice).toFixed(2) : this.avgPrice;
     }
     getNumOfDiamonds() {
         return this.diamondsCount;
